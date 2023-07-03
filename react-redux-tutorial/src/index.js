@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { devToolsEnhancer } from '@redux-devtools/extension';
 
 // 스토어 만들기
-const store = createStore(rootReducer, devToolsEnhancer);
+const store = createStore(rootReducer, devToolsEnhancer());
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
