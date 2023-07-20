@@ -1,17 +1,22 @@
-import useInputs from "./useInputs";
-
+//import useInputs from "./useInputs";
+import { useState } from "react";
 const Info = () =>{
-    const [state,onChange] = useInputs({
-        name : '',
-        nickname : ''
-    });
-    const {name, nickname} = state;
+    const [name,setName] = useState('');
+    const [nickname,setNickName] = useState('');
+
+    const onChange = e => {
+        setName(e.target.value)
+    }
+
+    const onChangeNickName = e => {
+        setNickName(e.target.value)
+    }
 
     return (
         <div>
             <div>
                 <input name ="name" value={name} onChange={onChange}></input>
-                <input name ="nickname" value={nickname} onChange={onChange}/>
+                <input name ="nickname" value={nickname} onChange={onChangeNickName}/>
             </div>
             <div>
                 <div>

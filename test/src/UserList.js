@@ -1,33 +1,40 @@
 import React from 'react';
-import User from './User';
 
+const User = React.memo(function User({ user, onRemove, onToggle }) {
+  return (
+    <div>
+      <b
+        style={{
+          cursor: 'pointer',
+          color: user.active ? 'green' : 'black'
+        }}
+        onClick={() => onToggle(user.id)}
+      >
+        {user.username}
+      </b>
+      &nbsp;
+      <span>({user.email})</span>
+      <button onClick={() => onRemove(user.id)}>삭제</button>
+    </div>
+  );
+});
 
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: 'velopert',
-      email: 'public.velopert@gmail.com'
-    },
-    {
-      id: 2,
-      username: 'tester',
-      email: 'tester@example.com'
-    },
-    {
-      id: 3,
-      username: 'liz',
-      email: 'liz@example.com'
-    }
-  ];
-
+function UserList({ users, onRemove, onToggle }) {
   return (
     <div>
       {users.map(user => (
-        <User user={user} key={user.id} />
+        <User
+          user={user}
+          key={user.id}
+          onRemove={onRemove}
+          onToggle={onToggle}
+        />
       ))}
     </div>
   );
 }
 
-export default UserList;
+export default React.memo(
+  UserList,
+  (prevProps, nextProps) => prevProps.users === nextProps.users
+);

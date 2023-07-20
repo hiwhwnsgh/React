@@ -1,4 +1,3 @@
-import './App.css';
 import Menu from './components/Menu';
 import {Route, Routes} from 'react-router-dom';
 import RedPage from './pages/RedPages';
