@@ -80,6 +80,9 @@ export const list = async ctx => {
     }
 };
 
+/*
+    GET /api/posts/:id
+*/
 export const read =async ctx => {
     const {id} = ctx.params;
     try{

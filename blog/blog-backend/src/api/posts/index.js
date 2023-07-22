@@ -12,5 +12,5 @@ post.get('/',postsCtrl.read);
 post.delete('/',postsCtrl.remove);
 post.patch('/',postsCtrl.update);
 
-post.use('/:id',postsCtrl.checkObjectId,post.routes());
+posts.use('/:id',postsCtrl.checkObjectId,post.routes());
 export default posts
